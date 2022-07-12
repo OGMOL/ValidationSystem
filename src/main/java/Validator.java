@@ -1,3 +1,3 @@
-public interface Validator {
-    void validate();
+public interface Validator <T>{
+    void validate(T t) throws ValidationFailedException;
 }
