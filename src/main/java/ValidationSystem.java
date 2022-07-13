@@ -1,16 +1,19 @@
-public class ValidationSystem {
+public class ValidationSystem<T> {
+    private T type;
 
-    public Validator validate(ValidatorType type) {
-        Validator validator = null;
+    private ValidationSystem(T type) {
+        this.type = type;
+    }
 
-        switch (type) {
-            case STRING_VALIDATOR:
-                validator = new StringValidator();
-                break;
-            case INTEGER_VALIDATOR:
-                validator = new IntegerValidator();
-                break;
+    public static <T> void validate(T type) throws ValidationFailedException {
+
+        if (type instanceof Integer) {
+            Validator<Integer> a = new IntegerValidator();
+            a.validate((Integer) type);
         }
-        return validator;
+        if (type instanceof String) {
+            Validator<String> a = new StringValidator();
+            a.validate((String) type);
+        }
     }
 }
