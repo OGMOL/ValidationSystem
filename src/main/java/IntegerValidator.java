@@ -1,7 +1,7 @@
-public class IntegerValidator<T> implements Validator<T>{
+public class IntegerValidator implements Validator<Integer>{
 
     @Override
-    public void validate(T t) throws ValidationFailedException {
-        if ((int)t <= 0 || (int)t >10) throw new ValidationFailedException("Число не входит в диапазон");
+    public void validate(Integer t) throws ValidationFailedException {
+        if (t <= 0 || t >10) throw new ValidationFailedException("Число не входит в диапазон");
     }
 }

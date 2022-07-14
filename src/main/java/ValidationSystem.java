@@ -1,9 +1,4 @@
 public class ValidationSystem<T> {
-    private T type;
-
-    private ValidationSystem(T type) {
-        this.type = type;
-    }
 
     public static <T> void validate(T type) throws ValidationFailedException {
 
