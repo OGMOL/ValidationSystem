@@ -1,14 +1,15 @@
-public class ValidationSystem<T> {
+public class ValidationSystem {
 
-    public static <T> void validate(T type) throws ValidationFailedException {
-
+    static <T> Validator create (T type){
         if (type instanceof Integer) {
-            Validator<Integer> a = new IntegerValidator();
-            a.validate((Integer) type);
+            return new IntegerValidator();
         }
         if (type instanceof String) {
-            Validator<String> a = new StringValidator();
-            a.validate((String) type);
-        }
+            return new StringValidator();
+        } else throw new RuntimeException("incorrect type");
+    }
+
+    public static <T> void validate(T type) throws ValidationFailedException {
+        create(type).validate(type);
     }
 }
